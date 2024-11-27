@@ -4,6 +4,7 @@ import Mario from "../../assets/pngimg.com - mario_PNG88.png";
 import Dragon from "../../assets/dragon.png";
 const DragonGame = () => {
   const [jump, setJump] = useState(false);
+  const [isJumping, setIsJumping] = useState(false); 
   
 
   const marioRef=useRef("")
@@ -11,20 +12,23 @@ const DragonGame = () => {
 
   useEffect(() => {
     const handleKeyEvent = (e) => {
-       if(e.keyCode===38 || e.keyCode===32){
+      if ((e.keyCode === 38 || e.keyCode === 32) && !isJumping) {
         setJump(true);
+        setIsJumping(true);
+
         setTimeout(() => {
           setJump(false);
-        }, 700);
-       }  
+          setIsJumping(false);
+        }, 600);
+      }
     };
 
-    window.addEventListener("keydown", handleKeyEvent);
-   return (()=>{
-    window.removeEventListener("keydown", handleKeyEvent);
-   })
+    window.addEventListener('keydown', handleKeyEvent);
 
-  }, []);
+    return () => {
+      window.removeEventListener('keydown', handleKeyEvent);
+    };
+  }, [isJumping]); 
 
   useEffect(() => {
    setInterval(()=>{

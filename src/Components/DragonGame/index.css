@@ -23,7 +23,7 @@
   position: absolute;
   bottom: 0;
   left: 5%;
-  /* transition: all 0.2s linear; */
+  transition: all 0.2s linear;
 }
 
 .animationmario {
