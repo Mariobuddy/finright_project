@@ -28,13 +28,21 @@ const DragonGame = () => {
 
   useEffect(() => {
    setInterval(()=>{
-  let dragonLeft=window.getComputedStyle(dragonRef?.current).getPropertyValue("left");
-  let dragonBottom=window.getComputedStyle(dragonRef?.current).getPropertyValue("bottom");
-  let marioLeft=window.getComputedStyle(marioRef?.current).getPropertyValue("left");
-  let marioBottom=window.getComputedStyle(marioRef?.current).getPropertyValue("bottom");
+    if(dragonRef?.current && marioRef?.current){
+      let dragonLeft=parseInt(window.getComputedStyle(dragonRef?.current).getPropertyValue("left"));
+      let dragonBottom=parseInt(window.getComputedStyle(dragonRef?.current).getPropertyValue("bottom"));
+      let marioLeft=parseInt(window.getComputedStyle(marioRef?.current).getPropertyValue("left"));
+      let marioBottom=parseInt(window.getComputedStyle(marioRef?.current).getPropertyValue("bottom"));
+       
 
-  console.log(marioBottom)
-  console.log(dragonBottom)
+      let offsetX=Math.abs(dragonLeft-marioLeft);
+      let offsetY=Math.abs(dragonBottom-marioBottom);
+
+      console.log(offsetX)
+
+      
+    }
+
 
    },100)
 
