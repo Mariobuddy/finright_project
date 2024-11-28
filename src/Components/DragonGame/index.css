@@ -1,3 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
 .gameMainDiv {
   width: 800px;
   height: 400px;
@@ -69,15 +76,29 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform:translate(-50%, -50%);
   }
   
   .play-button:hover {
     background-color: #45a049;
-    transform: scale(1.1);
+    transform:translate(-50%, -50%)  scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   .play-button:active {
-    transform: scale(1);
+    transform:translate(-50%, -50%) scale(1);
+  }
+
+
+  .score-h1 {
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    padding: 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 5px solid #218838;
+    font-weight: bold;
   }
