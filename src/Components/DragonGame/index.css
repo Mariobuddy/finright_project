@@ -14,6 +14,7 @@
   position: absolute;
   bottom: 0;
   transition: all 0.2s linear;
+  right: 5%;
 
 }
 
@@ -35,7 +36,7 @@
     bottom: 0%;
   }
   50% {
-    bottom: 20%;
+    bottom: 200px;
   }
   100% {
     bottom: 0%;
@@ -54,4 +55,28 @@
     100% {
       left: -10%;
     }
+  }
+
+  .play-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 45%;
+    top: 45%;
+  }
+  
+  .play-button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .play-button:active {
+    transform: scale(1);
   }

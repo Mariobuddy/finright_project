@@ -5,7 +5,7 @@ import "./index.css"
 const App = () => {
 
   return (
-    <div style={{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center",backgroundColor:"#000000"}}>
+    <div style={{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center"}}>
       <DragonGame/>
     </div>
   )
