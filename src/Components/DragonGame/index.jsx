@@ -5,6 +5,7 @@ import Dragon from "../../assets/dragon.png";
 import musicAudio from "../../assets/music.mp3"
 import overAudio from "../../assets/failure.mp3"
 import jumpAudio from "../../assets/jump.mp3"
+import Popup from "./Popup";
 
 
 
@@ -106,6 +107,7 @@ const DragonGame = () => {
   }, []);
   return (
     <div className="gameMainDiv">
+      <Popup/>
       <audio src={musicAudio} ref={bgAudioRef} controls style={{display:"none"}}></audio>
       <audio src={overAudio} ref={overAudioRef} controls style={{display:"none"}}></audio>
       <audio src={jumpAudio} ref={jumpAudioRef} controls style={{display:"none"}}></audio>

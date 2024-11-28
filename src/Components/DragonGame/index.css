@@ -67,8 +67,9 @@
     cursor: pointer;
     transition: all 0.3s ease;
     position: absolute;
-    left: 45%;
-    top: 45%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   
   .play-button:hover {
