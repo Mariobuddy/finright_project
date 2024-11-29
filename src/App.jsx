@@ -3,17 +3,49 @@ import DragonGame from "./Components/DragonGame";
 import "./App.css";
 import network from "../src/assets/network.png";
 import internet from "../src/assets/internet.png";
+import { SpinnerDotted } from "spinners-react";
 
 const App = () => {
   const [isNetworkAvailable, setIsNetworkAvailable] = useState(false);
   const [closePopUp, setClosePopUp] = useState(false);
+  const dummyData = [
+    {
+      name: "Rohit",
+      age: 24,
+      height: 5.6,
+      weight: 72,
+      designation: "Software Developer",
+    },
+    { name: "Sagar", age: 22, height: 5.8, weight: 62, designation: "Hr" },
+    {
+      name: "Aniket",
+      age: 27,
+      height: 5.7,
+      weight: 60,
+      designation: "Quality Assurance",
+    },
+    {
+      name: "Akash",
+      age: 25,
+      height: 5.9,
+      weight: 70,
+      designation: "Designer",
+    },
+    {
+      name: "Dinesh",
+      age: 2,
+      he8ight: 5.1,
+      weight: 68,
+      designation: "Accountant",
+    },
+  ];
 
   const generateRandomNumber = () => {
     const min = 5;
     const max = 20;
     const random = Math.floor(Math.random() * (max - min + 1)) + min;
-     
-    console.log(random * 1000)
+
+    console.log(random * 1000);
     setTimeout(() => {
       setIsNetworkAvailable(true);
       setClosePopUp(true);
@@ -23,7 +55,6 @@ const App = () => {
   useEffect(() => {
     generateRandomNumber();
   }, []);
-
 
   return (
     <div
@@ -35,6 +66,12 @@ const App = () => {
         flexDirection: "column",
       }}
     >
+      {/* <SpinnerDotted
+        size={90}
+        thickness={180}
+        speed={88}
+        color="rgba(57, 172, 103, 0.79)"
+      /> */}
       <header className="top_headers">
         <img
           alt="network"
