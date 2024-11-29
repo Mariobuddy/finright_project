@@ -7,7 +7,7 @@ import overAudio from "../../assets/failure.mp3";
 import jumpAudio from "../../assets/jump.mp3";
 import Popup from "./Popup";
 
-const DragonGame = ({ isNetworkAvailable, handleToGame, handleToWebsite }) => {
+const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp }) => {
   const [jump, setJump] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
   const [dragonJumping, setDragonJumping] = useState(false);
@@ -16,6 +16,12 @@ const DragonGame = ({ isNetworkAvailable, handleToGame, handleToWebsite }) => {
   let crossManual = true;
 
   const [score, setScore] = useState(0);
+
+  const handleToWebsite = () => {};
+
+  const handleToGame = () => {
+    setClosePopUp(false);
+  };
 
   const bgAudioRef = useRef("");
   const overAudioRef = useRef("");
@@ -92,6 +98,15 @@ const DragonGame = ({ isNetworkAvailable, handleToGame, handleToWebsite }) => {
 
   useEffect(() => {
     if (isNetworkAvailable) {
+      setDragonJumping(false);
+      setStartGame(false);
+      setScore(0);
+      if (marioRef?.current) {
+        marioRef.current.style.left = `${5}%`;
+      }
+      if (bgAudioRef?.current) {
+        bgAudioRef?.current?.pause();
+      }
     }
   }, [isNetworkAvailable]);
 
@@ -139,7 +154,13 @@ const DragonGame = ({ isNetworkAvailable, handleToGame, handleToWebsite }) => {
   }, []);
   return (
     <div className="gameMainDiv">
-      {<Popup />}
+      {isNetworkAvailable && (
+        <Popup
+          setClosePopUp={setClosePopUp}
+          handleToGame={handleToGame}
+          handleToWebsite={handleToWebsite}
+        />
+      )}
       <h1 className="score-h1">
         Score : <span style={{ color: "red" }}>{score}</span>
       </h1>

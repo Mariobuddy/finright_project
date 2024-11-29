@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import DragonGame from "./Components/DragonGame";
 import "./App.css";
 import network from "../src/assets/network.png";
+import internet from "../src/assets/internet.png";
 
 const App = () => {
   const [isNetworkAvailable, setIsNetworkAvailable] = useState(false);
+  const [closePopUp, setClosePopUp] = useState(false);
 
   const generateRandomNumber = () => {
     const min = 5;
@@ -13,16 +15,13 @@ const App = () => {
 
     setTimeout(() => {
       setIsNetworkAvailable(true);
+      setClosePopUp(true);
     }, random * 1000);
   };
 
   useEffect(() => {
     generateRandomNumber();
   }, []);
-
-  const handleToWebsite = () => {};
-
-  const handleToGame = () => {};
 
   console.log(isNetworkAvailable);
 
@@ -37,13 +36,23 @@ const App = () => {
       }}
     >
       <header className="top_headers">
-        <img alt="network" src={network} className="network" />
-        <h1 className="no-connection">No Connection Found</h1>
+        <img
+          alt="network"
+          src={isNetworkAvailable ? internet : network}
+          className="network"
+        />
+        <h1
+          className="no-connection"
+          style={{ color: isNetworkAvailable ? "green" : "#ff4c4c" }}
+        >
+          {isNetworkAvailable ? "Network Available" : "No Connection Found"}
+        </h1>
       </header>
+
       <DragonGame
         isNetworkAvailable={isNetworkAvailable}
-        handleToGame={handleToGame}
-        handleToWebsite={handleToWebsite}
+        closePopUp={closePopUp}
+        setClosePopUp={setClosePopUp}
       />
     </div>
   );
