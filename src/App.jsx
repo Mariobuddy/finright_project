@@ -12,7 +12,8 @@ const App = () => {
     const min = 5;
     const max = 20;
     const random = Math.floor(Math.random() * (max - min + 1)) + min;
-
+     
+    console.log(random * 1000)
     setTimeout(() => {
       setIsNetworkAvailable(true);
       setClosePopUp(true);
@@ -23,7 +24,6 @@ const App = () => {
     generateRandomNumber();
   }, []);
 
-  console.log(isNetworkAvailable);
 
   return (
     <div

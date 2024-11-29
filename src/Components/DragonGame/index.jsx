@@ -37,11 +37,9 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp }) => {
     }
   };
 
+
   useEffect(() => {
     const handleKeyEvent = (e) => {
-      if (isNetworkAvailable) {
-        return;
-      }
       if ((e.keyCode === 38 || e.keyCode === 32) && !isJumping) {
         if (startGame) {
           setJump(true);
@@ -154,7 +152,7 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp }) => {
   }, []);
   return (
     <div className="gameMainDiv">
-      {isNetworkAvailable && (
+      {(isNetworkAvailable && closePopUp) && (
         <Popup
           setClosePopUp={setClosePopUp}
           handleToGame={handleToGame}
