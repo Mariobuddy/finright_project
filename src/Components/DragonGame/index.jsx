@@ -7,12 +7,13 @@ import overAudio from "../../assets/failure.mp3";
 import jumpAudio from "../../assets/jump.mp3";
 import Popup from "./Popup";
 
-const DragonGame = () => {
+const DragonGame = ({ isNetworkAvailable }) => {
   const [jump, setJump] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
   const [dragonJumping, setDragonJumping] = useState(false);
   const [startGame, setStartGame] = useState(false);
-  const [cross, setCross] = useState(true);
+
+  let crossManual = true;
 
   const [score, setScore] = useState(0);
 
@@ -54,7 +55,10 @@ const DragonGame = () => {
                 .getComputedStyle(marioRef?.current)
                 .getPropertyValue("left")
             );
-            marioRef.current.style.left = `${marioLeft + 50}px`;
+
+            if (marioLeft < 700) {
+              marioRef.current.style.left = `${marioLeft + 50}px`;
+            }
           }
         }
       }
@@ -67,7 +71,10 @@ const DragonGame = () => {
                 .getComputedStyle(marioRef?.current)
                 .getPropertyValue("left")
             );
-            marioRef.current.style.left = `${marioLeft - 50}px`;
+
+            if (marioLeft > 20) {
+              marioRef.current.style.left = `${marioLeft - 50}px`;
+            }
           }
         }
       }
@@ -102,6 +109,7 @@ const DragonGame = () => {
         if (offsetX < 65 && offsetY < 65) {
           setDragonJumping(false);
           setStartGame(false);
+          setScore(0);
           if (marioRef?.current) {
             marioRef.current.style.left = `${5}%`;
           }
@@ -111,21 +119,22 @@ const DragonGame = () => {
           if (overAudioRef?.current) {
             overAudioRef?.current?.play();
           }
-        } else if (cross && offsetX < 65 && !isJumping) {
-          console.log("hello")
+        } else if (crossManual && offsetX < 65 && !isJumping) {
           setScore((prev) => (prev += 1));
-          setCross(false);
+          crossManual = false;
           setTimeout(() => {
-            setCross(true);
-          }, 6000);
+            crossManual = true;
+          }, 500);
         }
       }
     }, 100);
   }, []);
   return (
     <div className="gameMainDiv">
-      {/* <Popup/> */}
-      <h1 className="score-h1">Score : <span style={{color:"red"}}>{score}</span></h1>
+      {isNetworkAvailable && <Popup />}
+      <h1 className="score-h1">
+        Score : <span style={{ color: "red" }}>{score}</span>
+      </h1>
       <audio
         src={musicAudio}
         ref={bgAudioRef}
