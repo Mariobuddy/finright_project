@@ -7,7 +7,7 @@ import overAudio from "../../assets/failure.mp3";
 import jumpAudio from "../../assets/jump.mp3";
 import Popup from "./Popup";
 
-const DragonGame = ({ isNetworkAvailable }) => {
+const DragonGame = ({ isNetworkAvailable, handleToGame, handleToWebsite }) => {
   const [jump, setJump] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
   const [dragonJumping, setDragonJumping] = useState(false);
@@ -33,6 +33,9 @@ const DragonGame = ({ isNetworkAvailable }) => {
 
   useEffect(() => {
     const handleKeyEvent = (e) => {
+      if (isNetworkAvailable) {
+        return;
+      }
       if ((e.keyCode === 38 || e.keyCode === 32) && !isJumping) {
         if (startGame) {
           setJump(true);
@@ -88,6 +91,11 @@ const DragonGame = ({ isNetworkAvailable }) => {
   }, [isJumping, startGame]);
 
   useEffect(() => {
+    if (isNetworkAvailable) {
+    }
+  }, [isNetworkAvailable]);
+
+  useEffect(() => {
     setInterval(() => {
       if (dragonRef?.current && marioRef?.current) {
         let dragonLeft = parseInt(
@@ -131,7 +139,7 @@ const DragonGame = ({ isNetworkAvailable }) => {
   }, []);
   return (
     <div className="gameMainDiv">
-      {isNetworkAvailable && <Popup />}
+      {<Popup />}
       <h1 className="score-h1">
         Score : <span style={{ color: "red" }}>{score}</span>
       </h1>

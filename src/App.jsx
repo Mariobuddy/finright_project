@@ -20,7 +20,11 @@ const App = () => {
     generateRandomNumber();
   }, []);
 
-  console.log(isNetworkAvailable)
+  const handleToWebsite = () => {};
+
+  const handleToGame = () => {};
+
+  console.log(isNetworkAvailable);
 
   return (
     <div
@@ -36,7 +40,11 @@ const App = () => {
         <img alt="network" src={network} className="network" />
         <h1 className="no-connection">No Connection Found</h1>
       </header>
-      <DragonGame isNetworkAvailable={isNetworkAvailable} />
+      <DragonGame
+        isNetworkAvailable={isNetworkAvailable}
+        handleToGame={handleToGame}
+        handleToWebsite={handleToWebsite}
+      />
     </div>
   );
 };
