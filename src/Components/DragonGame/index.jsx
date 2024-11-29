@@ -117,7 +117,7 @@ const DragonGame = () => {
           setCross(false);
           setTimeout(() => {
             setCross(true);
-          }, 1000);
+          }, 6000);
         }
       }
     }, 100);
@@ -125,7 +125,7 @@ const DragonGame = () => {
   return (
     <div className="gameMainDiv">
       {/* <Popup/> */}
-      <h1 className="score-h1">Score : {score}</h1>
+      <h1 className="score-h1">Score : <span style={{color:"red"}}>{score}</span></h1>
       <audio
         src={musicAudio}
         ref={bgAudioRef}
