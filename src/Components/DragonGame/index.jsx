@@ -7,7 +7,7 @@ import overAudio from "../../assets/failure.mp3";
 import jumpAudio from "../../assets/jump.mp3";
 import Popup from "./Popup";
 
-const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp }) => {
+const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,setLoading}) => {
   const [jump, setJump] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
   const [dragonJumping, setDragonJumping] = useState(false);
@@ -17,7 +17,13 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp }) => {
 
   const [score, setScore] = useState(0);
 
-  const handleToWebsite = () => {};
+  const handleToWebsite = () => {
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+      setWebsite(true)
+    },2000)
+  };
 
   const handleToGame = () => {
     setClosePopUp(false);

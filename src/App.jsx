@@ -8,6 +8,9 @@ import { SpinnerDotted } from "spinners-react";
 const App = () => {
   const [isNetworkAvailable, setIsNetworkAvailable] = useState(false);
   const [closePopUp, setClosePopUp] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [website, setWebsite] = useState(false);
+
   const dummyData = [
     {
       name: "Rohit",
@@ -45,7 +48,6 @@ const App = () => {
     const max = 20;
     const random = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    console.log(random * 1000);
     setTimeout(() => {
       setIsNetworkAvailable(true);
       setClosePopUp(true);
@@ -55,6 +57,8 @@ const App = () => {
   useEffect(() => {
     generateRandomNumber();
   }, []);
+
+ 
 
   return (
     <div
@@ -66,13 +70,10 @@ const App = () => {
         flexDirection: "column",
       }}
     >
-      {/* <SpinnerDotted
-        size={90}
-        thickness={180}
-        speed={88}
-        color="rgba(57, 172, 103, 0.79)"
-      /> */}
-      <header className="top_headers">
+      <header
+        className="top_headers"
+        style={{ visibility: website || loading ? "hidden" : "visible" }}
+      >
         <img
           alt="network"
           src={isNetworkAvailable ? internet : network}
@@ -86,11 +87,51 @@ const App = () => {
         </h1>
       </header>
 
-      <DragonGame
-        isNetworkAvailable={isNetworkAvailable}
-        closePopUp={closePopUp}
-        setClosePopUp={setClosePopUp}
-      />
+      {loading ? (
+        <div className="container">
+          <SpinnerDotted
+            size={90}
+            thickness={180}
+            speed={88}
+            color="rgba(57, 172, 103, 0.79)"
+          />
+        </div>
+      ) : website ? (
+        <div className="container">
+          <h1 className="data_head">Employee Data</h1>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Designation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dummyData.map((employee, index) => (
+                <tr key={index}>
+                  <td>{employee.name}</td>
+                  <td>{employee.age}</td>
+                  <td>{employee.height} ft</td>
+                  <td>{employee.weight} kg</td>
+                  <td>{employee.designation}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <DragonGame
+          isNetworkAvailable={isNetworkAvailable}
+          closePopUp={closePopUp}
+          setClosePopUp={setClosePopUp}
+          setWebsite={setWebsite}
+          setLoading={setLoading}
+        />
+      )}
+      <p className="continue-link" style={{display:isNetworkAvailable && !closePopUp ?"inline-block":"none"}}>Continue to website</p>
     </div>
   );
 };
