@@ -131,7 +131,7 @@ const App = () => {
           setLoading={setLoading}
         />
       )}
-      <p className="continue-link" style={{display:isNetworkAvailable && !closePopUp ?"inline-block":"none"}}>Continue to website</p>
+      <p className="continue-link" style={{visibility:isNetworkAvailable && !closePopUp ?"visible":"hidden"}}>Continue to website</p>
     </div>
   );
 };
