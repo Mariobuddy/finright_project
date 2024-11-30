@@ -26,6 +26,11 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,
   };
 
   const handleToGame = () => {
+    setStartGame(true)
+    setDragonJumping(true);
+    if (bgAudioRef?.current) {
+      bgAudioRef?.current?.play();
+    }
     setClosePopUp(false);
   };
 
@@ -104,10 +109,7 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,
     if (isNetworkAvailable) {
       setDragonJumping(false);
       setStartGame(false);
-      setScore(0);
-      if (marioRef?.current) {
-        marioRef.current.style.left = `${5}%`;
-      }
+ 
       if (bgAudioRef?.current) {
         bgAudioRef?.current?.pause();
       }
