@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-const Popup = ({  handleToGame, handleToWebsite }) => {
+const Popup = ({ handleToGame, handleToWebsite }) => {
   return (
     <div className="main-pop-div">
       <h1 className="nt_avl">Network Available</h1>
@@ -11,7 +11,9 @@ const Popup = ({  handleToGame, handleToWebsite }) => {
           Continue to Game
         </button>
 
-        <button class="continue-button" onClick={handleToWebsite}>Continue to Website</button>
+        <button class="continue-button" onClick={handleToWebsite}>
+          Continue to Website
+        </button>
       </div>
     </div>
   );

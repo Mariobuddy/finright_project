@@ -1,82 +1,83 @@
 .no-connection {
-    font-size: 2rem; 
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
-    border-radius: 10px;
-    background-color: #fff;
-  }
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #fff;
+}
 
-  .network{
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-  }
+.network {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
 
-  .top_headers{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5px;
-  }
+.top_headers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
 
-  .container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  
-  .data_head {
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .data-table th, .data-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .data-table th {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .data-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .data-table tr:hover {
-    background-color: #ddd;
-  }
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
-  .continue-link {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #4CAF50; 
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s; 
-    margin-top: 10px;
-    cursor: pointer;
+.data_head {
+  font-size: 2rem;
+  color: #333;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #4caf50;
+  color: white;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.data-table tr:hover {
+  background-color: #ddd;
+}
+
+.continue-link {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .continue-link:hover {
-    background-color: #45a049; 
-    transform: scale(1.05); 
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 
 .continue-link:active {
-    background-color: #3e8e41; 
-    transform: scale(0.98); 
+  background-color: #3e8e41;
+  transform: scale(0.98);
 }

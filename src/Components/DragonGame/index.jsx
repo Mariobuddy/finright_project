@@ -7,26 +7,33 @@ import overAudio from "../../assets/failure.mp3";
 import jumpAudio from "../../assets/jump.mp3";
 import Popup from "./Popup";
 
-const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,setLoading}) => {
+const DragonGame = ({
+  isNetworkAvailable,
+  closePopUp,
+  setClosePopUp,
+  setWebsite,
+  setLoading,
+}) => {
   const [jump, setJump] = useState(false);
   const [isJumping, setIsJumping] = useState(false);
   const [dragonJumping, setDragonJumping] = useState(false);
   const [startGame, setStartGame] = useState(false);
+  const [dragonPosition, setDragonPosition] = useState(false);
 
   let crossManual = true;
 
   const [score, setScore] = useState(0);
 
   const handleToWebsite = () => {
-    setLoading(true)
-    setTimeout(()=>{
-      setLoading(false)
-      setWebsite(true)
-    },2000)
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setWebsite(true);
+    }, 2000);
   };
 
   const handleToGame = () => {
-    setStartGame(true)
+    setStartGame(true);
     setDragonJumping(true);
     if (bgAudioRef?.current) {
       bgAudioRef?.current?.play();
@@ -47,7 +54,6 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,
       bgAudioRef?.current?.play();
     }
   };
-
 
   useEffect(() => {
     const handleKeyEvent = (e) => {
@@ -109,7 +115,7 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,
     if (isNetworkAvailable) {
       setDragonJumping(false);
       setStartGame(false);
- 
+
       if (bgAudioRef?.current) {
         bgAudioRef?.current?.pause();
       }
@@ -131,6 +137,8 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,
         let marioBottom = parseInt(
           window.getComputedStyle(marioRef?.current).getPropertyValue("bottom")
         );
+
+        setDragonPosition(dragonLeft);
 
         let offsetX = Math.abs(dragonLeft - marioLeft);
         let offsetY = Math.abs(dragonBottom - marioBottom);
@@ -160,7 +168,7 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,
   }, []);
   return (
     <div className="gameMainDiv">
-      {(isNetworkAvailable && closePopUp) && (
+      {isNetworkAvailable && closePopUp && (
         <Popup
           setClosePopUp={setClosePopUp}
           handleToGame={handleToGame}
@@ -201,6 +209,14 @@ const DragonGame = ({ isNetworkAvailable, closePopUp, setClosePopUp,setWebsite ,
         alt="dragon"
         className={dragonJumping ? "dragon animationdragon" : "dragon"}
         ref={dragonRef}
+        style={{
+          left:
+            startGame === false && isNetworkAvailable && closePopUp
+              ? `${dragonPosition}px`
+              : startGame
+              ? `${dragonPosition}px`
+              : "88%",
+        }}
       />
       <img
         src={Mario}

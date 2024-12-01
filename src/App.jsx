@@ -54,20 +54,18 @@ const App = () => {
     }, random * 1000);
   };
 
-  const handleContinue=()=>{
-    setLoading(true)
-    setClosePopUp(true)
-    setTimeout(()=>{
-      setLoading(false)
-      setWebsite(true)
-    },2000)
-  }
+  const handleContinue = () => {
+    setLoading(true);
+    setClosePopUp(true);
+    setTimeout(() => {
+      setLoading(false);
+      setWebsite(true);
+    }, 2000);
+  };
 
   useEffect(() => {
     generateRandomNumber();
   }, []);
-
- 
 
   return (
     <div
@@ -140,7 +138,15 @@ const App = () => {
           setLoading={setLoading}
         />
       )}
-      <p className="continue-link" style={{visibility:isNetworkAvailable && !closePopUp ?"visible":"hidden"}} onClick={handleContinue}>Continue to website</p>
+      <p
+        className="continue-link"
+        style={{
+          visibility: isNetworkAvailable && !closePopUp ? "visible" : "hidden",
+        }}
+        onClick={handleContinue}
+      >
+        Continue to website
+      </p>
     </div>
   );
 };
