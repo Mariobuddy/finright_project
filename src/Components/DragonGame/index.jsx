@@ -5,6 +5,7 @@ import Dragon from "../../assets/dragon.png";
 import musicAudio from "../../assets/music.mp3";
 import overAudio from "../../assets/failure.mp3";
 import jumpAudio from "../../assets/jump.mp3";
+import connectionAudio from "../../assets/connection.mp3";
 import Popup from "./Popup";
 
 const DragonGame = ({
@@ -46,6 +47,8 @@ const DragonGame = ({
   const jumpAudioRef = useRef("");
   const marioRef = useRef("");
   const dragonRef = useRef("");
+  const connectionRef = useRef("");
+
 
   const handleStartGame = () => {
     setStartGame(true);
@@ -119,6 +122,9 @@ const DragonGame = ({
       if (bgAudioRef?.current) {
         bgAudioRef?.current?.pause();
       }
+      if(connectionRef?.current){
+        connectionRef?.current?.play()
+      }
     }
   }, [isNetworkAvailable]);
 
@@ -181,6 +187,12 @@ const DragonGame = ({
       <audio
         src={musicAudio}
         ref={bgAudioRef}
+        controls
+        style={{ display: "none" }}
+      ></audio>
+          <audio
+        src={connectionAudio}
+        ref={connectionRef}
         controls
         style={{ display: "none" }}
       ></audio>
